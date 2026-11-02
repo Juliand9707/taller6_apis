@@ -1,0 +1,11 @@
+# Ambientes generados por tox
+.tox/
+
+# Caché de Python, pytest y mypy
+__pycache__/
+*.py[co]
+.pytest_cache/
+.mypy_cache/
+
+# Archivos del sistema macOS
+.DS_Store
