@@ -24,7 +24,10 @@ def health() -> dict:
         name=settings.PROJECT_NAME, api_version=__version__, model_version=model_version
     )
 
-    return health.model_dump()
+    # Corrección (taller 6): el paquete del modelo exige pydantic<2.0, por lo que
+    # se instala Pydantic 1.10. model_dump() es un método de Pydantic v2 y generaba
+    # un error HTTP 500 (AttributeError). dict() es el método equivalente en v1.
+    return health.dict()
 
 # Ruta para realizar las predicciones
 @api_router.post("/predict", response_model=schemas.PredictionResults, status_code=200)
